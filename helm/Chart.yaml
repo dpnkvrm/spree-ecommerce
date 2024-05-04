@@ -1,0 +1,6 @@
+apiVersion: v2
+name: "spree-ecomm"
+namespace: "spree-ecomm"
+version: 0.1
+appVersion: 1.1
+description: "CBA Demo Spree Ecomm App"

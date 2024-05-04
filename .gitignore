@@ -35,3 +35,4 @@
 /config/master.key
 docker-compose.yaml
 *.sql
+secret_namespace.yml

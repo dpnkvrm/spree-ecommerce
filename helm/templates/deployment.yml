@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.nameSpace }}-deployment
+  namespace: {{ .Values.nameSpace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spree
+  template:
+    metadata:
+      labels:
+        app: spree
+    spec:
+      containers:
+        - name: spree-webapp
+          image: {{ .Values.dockerImage }}
+          ports:
+            - containerPort: 3000
+          env:
+            - name: RAILS_MAX_THREADS
+              values: {{ .Values.railsMaxThreads }}
+
+            - name: RAILS_ENV
+              values: {{ .Values.railsEnv }}
+
+            - name: DB_NAME
+              values: {{ .Values.dbName }}
+
+            - name: DB_HOST
+              values: {{ .Values.dbHost }}
+
+            - name: DB_USER
+              values: {{ .Values.dbUser }}
+
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: spree-ecomm-secrets
+                  key: DB_PASS
+
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: spree-ecomm-secrets
+                  key: SECRET_KEY_BASE
+
+            - name: REDIS_URL
+              values: {{ .Values.redisUrl }}
+
+            - name: AWS_REGION_S3
+              values: {{ .Values.awsRegionS3 }}
+
+            - name: ASSETS_S3_BUCKET
+              values: {{ .Values.assetsS3Bucket }}
+
+            - name: AWS_ACCESS_KEY_ID_S3
+              valueFrom:
+                secretKeyRef:
+                  name: spree-ecomm-secrets
+                  key: AWS_ACCESS_KEY_ID_S3
+
+            - name: AWS_SECRET_ACCESS_KEY_S3
+              valueFrom:
+                secretKeyRef:
+                  name: spree-ecomm-secrets
+                  key: AWS_SECRET_ACCESS_KEY_S3
+
+        - name: redis
+          image: redis:latest
+          ports:
+            - containerPort: 6379

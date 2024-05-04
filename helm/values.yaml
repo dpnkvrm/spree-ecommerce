@@ -1,0 +1,16 @@
+albTags: "Cell_Name=T1"
+assetsS3Bucket: spree-ecomm-prod
+awsRegionS3: ap-south-1
+dbHost: cba-demo-app-rds.cpsvqfjzrvb6.us-east-1.rds.amazonaws.com
+dbName: spree_production
+dbUser: postgres
+dockerImage: "440493266294.dkr.ecr.us-east-1.amazonaws.com/spree-ecommerce:latest"
+ingressRoleArn: "arn:aws:iam::440493266294:role/eks-lb-controller-role"
+nameSpace: spree-ecomm
+privateAlbSecurityGroup: "sg-09730f24d0aca9129"
+privateAlbSubnets: "subnet-0530681cfa9afec70, subnet-058b98ccf158c76bd"
+publicAlbSecurityGroup: "sg-"
+publicAlbSubnets: "subnet-"
+railsEnv: production
+railsMaxThreads: 2
+redisUrl: redis://redis:6379/2
