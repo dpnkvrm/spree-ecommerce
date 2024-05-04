@@ -5,8 +5,9 @@ metadata:
   name: ingress-{{ .Values.nameSpace }}-private
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/subnets: {{ .Values.privateAlbSubnets }}
+    alb.ingress.kubernetes.io/subnets: {{ .Values.publicAlbSubnets }}
     alb.ingress.kubernetes.io/tags: {{ .Values.albTags }}
+    alb.ingress.kubernetes.io/security-groups: {{ .Values.privateAlbSecurityGroup }}
 spec:
   ingressClassName: alb
   rules:
