@@ -20,19 +20,19 @@ spec:
             - containerPort: 3000
           env:
             - name: RAILS_MAX_THREADS
-              values: {{ .Values.railsMaxThreads }}
+              value: "{{ .Values.railsMaxThreads }}"
 
             - name: RAILS_ENV
-              values: {{ .Values.railsEnv }}
+              value: "{{ .Values.railsEnv }}"
 
             - name: DB_NAME
-              values: {{ .Values.dbName }}
+              value: "{{ .Values.dbName }}"
 
             - name: DB_HOST
-              values: {{ .Values.dbHost }}
+              value: "{{ .Values.dbHost }}"
 
             - name: DB_USER
-              values: {{ .Values.dbUser }}
+              value: "{{ .Values.dbUser }}"
 
             - name: DB_PASS
               valueFrom:
@@ -47,13 +47,13 @@ spec:
                   key: SECRET_KEY_BASE
 
             - name: REDIS_URL
-              values: {{ .Values.redisUrl }}
+              value: "{{ .Values.redisUrl }}"
 
             - name: AWS_REGION_S3
-              values: {{ .Values.awsRegionS3 }}
+              value: "{{ .Values.awsRegionS3 }}"
 
             - name: ASSETS_S3_BUCKET
-              values: {{ .Values.assetsS3Bucket }}
+              value: "{{ .Values.assetsS3Bucket }}"
 
             - name: AWS_ACCESS_KEY_ID_S3
               valueFrom:
