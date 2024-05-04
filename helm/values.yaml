@@ -13,7 +13,7 @@ db:
   database: "spree_production"
   user: "postgres"
 
-imgae:
+image:
   url: "440493266294.dkr.ecr.us-east-1.amazonaws.com/spree-ecommerce:latest"
 
 ingressRoleArn: "arn:aws:iam::440493266294:role/eks-lb-controller-role"

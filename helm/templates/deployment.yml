@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: spree-webapp
-          image: {{ .Values.dockerImage }}
+          image: {{ .Values.image.url }}
           ports:
             - containerPort: 3000
           env:
