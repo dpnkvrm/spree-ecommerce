@@ -5,6 +5,10 @@ phases:
     commands:
       - pip3 install -q awscli --upgrade --user
       - yum -q install -y jq
+      - echo "Installing Helm..."
+      - curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+      - chmod 700 get_helm.sh
+      - ./get_helm.sh
   pre_build:
     commands:
       ### Login to Amazon ECR
@@ -23,3 +27,8 @@ phases:
       ### Publish the docker image to ECR
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+
+  helm_deploy:
+    commands:
+      - echo "upgrading helm chart with default values"
+      - helm upgrade spree-ecomm -n spree-ecomm
