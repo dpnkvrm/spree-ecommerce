@@ -1,16 +1,26 @@
-albTags: "Cell_Name=T1"
-assetsS3Bucket: "spree-ecomm-prod"
-awsRegionS3: "ap-south-1"
-dbHost: "cba-demo-app-rds.cpsvqfjzrvb6.us-east-1.rds.amazonaws.com"
-dbName: "spree_production"
-dbUser: "postgres"
-dockerImage: "440493266294.dkr.ecr.us-east-1.amazonaws.com/spree-ecommerce:latest"
+alb:
+  albTags: "Cell_Name=T1"
+  privateAlbSecurityGroup: "sg-09730f24d0aca9129"
+  privateAlbSubnets: "subnet-038bc47f1a0e6d29d, subnet-058b98ccf158c76bd"
+  publicAlbSecurityGroup: "sg-"
+  publicAlbSubnets: "subnet-0530681cfa9afec70, subnet-0f7bff956e40078f4"
+
+assetsS3:
+  bucket: "spree-ecomm-prod"
+  region: "ap-south-1"
+db:
+  host: "cba-demo-app-rds.cpsvqfjzrvb6.us-east-1.rds.amazonaws.com"
+  database: "spree_production"
+  user: "postgres"
+
+imgae:
+  url: "440493266294.dkr.ecr.us-east-1.amazonaws.com/spree-ecommerce:latest"
+
 ingressRoleArn: "arn:aws:iam::440493266294:role/eks-lb-controller-role"
 nameSpace: "spree-ecomm"
-privateAlbSecurityGroup: "sg-09730f24d0aca9129"
-privateAlbSubnets: "subnet-038bc47f1a0e6d29d, subnet-058b98ccf158c76bd"
-publicAlbSecurityGroup: "sg-"
-publicAlbSubnets: "subnet-0530681cfa9afec70, subnet-0f7bff956e40078f4"
-railsEnv: "production"
-railsMaxThreads: "2"
+
+rails:
+  env: "production"
+  maxThreads: "2"
+
 redisUrl: "redis://redis:6379/2"
