@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing Helm..."
+      - curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+      - chmod 700 get_helm.sh
+      - ./get_helm.sh
+  build:
+    commands:
+      # Package the Helm chart
+      - echo "Packaging the Helm chart..."
+      - helm package helm
+      - |
+        if [[ -z $(helm list | grep spree-ecomm) ]]; then
+          helm install spree-ecomm spree-ecomm-0.1.tgz
+        else
+          helm upgrade spree-comm --dry-run
+          helm upgrade spree-comm
+        fi
