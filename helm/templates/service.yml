@@ -3,6 +3,7 @@ kind: Service
 metadata:
   labels:
     app: spree
+  namespace: {{ .Values.nameSpace }}
   name: {{ .Values.nameSpace }}-service
 spec:
   ports:
