@@ -9,7 +9,23 @@ phases:
       - ./get_helm.sh
   build:
     commands:
-      # Package the Helm chart
+      # generate secrets
+      - SECRET_JSON=$(aws secretsmanager get-secret-value --secret-id my-secret-id --query SecretString --output text)
+      - |
+        cat <<EOF > secrets.yml
+        apiVersion: v1
+        kind: Secret
+        metadata:
+          name: spree-ecomm-secrets
+          namespace: spree-ecomm
+        data:
+        EOF
+      - |
+        echo "$SECRET_JSON" | jq -r 'to_entries[] | "\(.key): \(.value | @base64)"' | while IFS=: read key value; do
+          echo "  $key: $value" >> secrets.yml
+        done
+      - cp secrets.yml helm/templates/
+     # Package helm release
       - echo "Packaging the Helm chart..."
       - helm package helm
       - |
