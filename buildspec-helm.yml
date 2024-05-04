@@ -10,7 +10,7 @@ phases:
   build:
     commands:
       # generate secrets
-      - SECRET_JSON=$(aws secretsmanager get-secret-value --secret-id my-secret-id --query SecretString --output text)
+      - SECRET_JSON=$(aws secretsmanager get-secret-value --secret-id cba_demo_app_secrets --query SecretString --output text)
       - |
         cat <<EOF > secrets.yml
         apiVersion: v1
