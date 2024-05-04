@@ -55,4 +55,4 @@ phases:
           helm upgrade spree-ecomm spree-ecomm-0.1.tgz
         fi
       - ADDRESS=$(kubectl get ingress -n spree-ecomm -o custom-columns=ADDRESS:.status.loadBalancer.ingress[].hostname | grep -v ADDRESS)
-      - echo "Application Url: http://$ADDRESS"
+      - echo "Application Url= http://$ADDRESS"
