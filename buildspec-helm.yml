@@ -11,6 +11,9 @@ phases:
       - curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
       - chmod 700 get_helm.sh
       - ./get_helm.sh
+      - curl -LO "https://dl.k8s.io/release/v1.22.0/bin/linux/amd64/kubectl"
+      - chmod +x kubectl
+      - mv kubectl /usr/local/bin/
 
   build:
     commands:
@@ -51,3 +54,5 @@ phases:
           helm upgrade spree-ecomm spree-ecomm-0.1.tgz --dry-run
           helm upgrade spree-ecomm spree-ecomm-0.1.tgz
         fi
+      - ADDRESS=$(kubectl get ingress -n spree-ecomm -o custom-columns=ADDRESS:.status.loadBalancer.ingress[].hostname | grep -v ADDRESS)
+      - echo "Application Url: http://$ADDRESS"
