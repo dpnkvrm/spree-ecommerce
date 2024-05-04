@@ -4,7 +4,7 @@ metadata:
   namespace: {{ .Values.nameSpace }}
   name: ingress-{{ .Values.nameSpace }}-private
   annotations:
-    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/subnets: {{ .Values.privateAlbSubnets }}
     alb.ingress.kubernetes.io/tags: {{ .Values.albTags }}
 spec:

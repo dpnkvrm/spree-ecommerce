@@ -11,6 +11,4 @@ spec:
       targetPort: 3000
   selector:
     app: spree
-  type: LoadBalancer
-status:
-  loadBalancer: {}
+  type: NodePort
