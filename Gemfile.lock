@@ -210,6 +210,22 @@ GEM
       execjs (~> 2)
     awesome_nested_set (3.6.0)
       activerecord (>= 4.0.0, < 7.2)
+    aws-eventstream (1.3.0)
+    aws-partitions (1.924.0)
+    aws-sdk-core (3.121.6)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.520.1)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.50.0)
+      aws-sdk-core (~> 3, >= 3.121.2)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.104.0)
+      aws-sdk-core (~> 3, >= 3.121.2)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.8.0)
+      aws-eventstream (~> 1, >= 1.0.2)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -299,6 +315,7 @@ GEM
     jbuilder (2.12.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.6.2)
     jquery-rails (4.6.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -549,6 +566,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  aws-sdk-core (~> 3.121.3)
+  aws-sdk-s3 (~> 1.104.0)
   bootsnap
   capybara
   debug

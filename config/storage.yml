@@ -13,7 +13,12 @@ local:
 #   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
 #   region: us-east-1
 #   bucket: your_own_bucket-<%= Rails.env %>
-
+amazon:
+   service: S3
+   access_key_id: <%= ENV["AWS_ACCESS_KEY_ID_S3"] %>
+   secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY_S3"] %>
+   region: <%= ENV["AWS_REGION_S3"] %>
+   bucket: <%= ENV["ASSETS_S3_BUCKET"] %>
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
