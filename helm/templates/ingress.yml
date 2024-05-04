@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: {{ .Values.nameSpace }}
+  name: ingress-{{ .Values.nameSpace }}-private
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/subnets: {{ .Values.privateAlbSubnets }}
+    alb.ingress.kubernetes.io/tags: {{ .Values.albTags }}
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.nameSpace }}-service
+                port:
+                  number: 80
