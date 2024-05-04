@@ -46,6 +46,6 @@ phases:
         if [[ -z $(helm list | grep spree-ecomm) ]]; then
           helm install spree-ecomm spree-ecomm-0.1.tgz
         else
-          helm upgrade spree-comm --dry-run
-          helm upgrade spree-comm
+          helm upgrade spree-comm spree-ecomm-0.1.tgz --dry-run
+          helm upgrade spree-comm spree-ecomm-0.1.tgz
         fi
