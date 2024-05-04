@@ -1,16 +1,16 @@
-#apiVersion: v1
-#kind: Service
-#metadata:
-#  labels:
-#    app: wp_poc
-#  name: {{ .Values.wordpress }}
-#spec:
-#  ports:
-#    - port: 80
-#      protocol: TCP
-#      targetPort: 80
-#  selector:
-#    app: spree-ecomm
-#  type: LoadBalancer
-#status:
-#  loadBalancer: {}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: spree
+  name: {{ .Values.nameSpace }}-service
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: spree
+  type: LoadBalancer
+status:
+  loadBalancer: {}
