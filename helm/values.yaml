@@ -4,6 +4,7 @@ alb:
   privateAlbSubnets: "subnet-038bc47f1a0e6d29d, subnet-058b98ccf158c76bd"
   publicAlbSecurityGroup: "sg-"
   publicAlbSubnets: "subnet-0530681cfa9afec70, subnet-0f7bff956e40078f4"
+  certificateArn: "arn:aws:acm:us-east-1:440493266294:certificate/d71374fe-7ab2-4bc1-b2cd-1b38deeb2b38"
 
 assetsS3:
   bucket: "spree-ecomm-prod"
