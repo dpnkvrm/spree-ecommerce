@@ -33,3 +33,5 @@ spec:
                 name: {{ .Values.nameSpace }}-service
                 port:
                   number: 80
+            path: /
+            pathType: Prefix
